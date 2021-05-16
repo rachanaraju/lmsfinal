@@ -1,0 +1,67 @@
+
+  <div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Create Employee</strong> Form
+      </div>
+      <div class="card-body">
+        <div class="col-md-9 container">
+            <div id="login-container"> 
+              <div class="name">
+                  <div class="row">
+                      <div class="col-md-6">
+                <h2 *ngFor="let employee of Employee; let i = index">Employee name: {{employee.employee_name}} </h2>
+              </div>
+             
+                  </div>
+                <br>
+              </div>
+             <br>
+              <div class="description" *ngFor="let employee of Employee; let i = index">
+        
+                  <div class="row">
+                      <div class="col-md-6">
+                        <p><b>ID:</b> {{employee.employee_id}} </p> <br>
+                        <p><b>Role:</b> {{employee.role_description}} </p> <br>
+                        <p><b>Department:</b> {{employee.department_name}} </p> <br>
+                        <p><b>Designation:</b> {{employee.designation_name}} </p> <br>
+                        <p><b>Company:</b> {{employee.company_name}} </p> <br>
+                        <p><b>Date Of Birth:</b> {{employee.date_of_birth  | date : 'dd-MM-yyyy'}} </p> <br>
+                        <p><b>Joining Date:</b> {{employee.joining_date  | date : 'dd-MM-yyyy'}} </p> <br>
+                        <p><b>Nationality:</b> {{employee.nationality}} </p> <br>
+                        <p><b>Blood Group:</b> {{employee.blood_group}} </p> <br>
+                        <p><b>Gender:</b> {{employee.gender }} </p> <br>
+                        <p><b>Employee Status:</b> {{employee.employee_status}} </p> <br>
+                        <p><b>Base Location:</b> {{employee.base_location}} </p> <br> 
+                       
+                      </div>
+                      <div class="col-md-6">
+                        <!-- <p><b>Role:</b> {{employee.role}} </p> <br>
+                        <p><b>Alternate Email:</b> {{employee.email2}} </p> <br>
+                        <p><b>Alternate Phone Number:</b> {{employee.phonenumber2}} </p> <br>
+                        <p><b>Address Line 2:</b> {{employee.address2}} </p> <br>
+                        <p><b>Pincode:</b> {{employee.pincode}} </p> <br>
+                        <p><b>IFSC code:</b> {{employee.bankifsc}} </p> <br>
+                        <p><b>Pan number:</b> {{employee.pan}} </p> <br>
+                        <p><b>Comments:</b> {{employee.comments}} </p> <br>
+                        <p><b>State:</b> {{employee.state}} </p> <br>
+                        <p><b>Bank UPI code:</b> {{employee.bankupi}} </p> <br>
+                        <p><b>Blood Group:</b> {{employee.bloodgroup}} </p> <br>
+                        <p><b>Referral:</b> {{employee.referred}} </p> <br> -->
+                      
+                      </div>
+                    </div>
+                
+                <!-- <span class="edit" [routerLink]="['/employee-edit/', employee.employee_id]">
+                  <button mat-raised-button><fa-icon class="fa-icon" [icon]="faEdit"></fa-icon>Update</button>
+                </span> -->
+              </div>
+            
+              <footer></footer>
+            </div>
+        
+          </div>
+      </div>
+     
+    </div>
+    </div>

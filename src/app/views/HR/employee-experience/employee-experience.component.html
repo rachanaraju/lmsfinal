@@ -1,0 +1,126 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Employee  Previous Experience</strong> 
+      </div>
+      <div class="card-body">
+         <form #form="ngForm" [formGroup]="EmployeeExperience" >
+            <table>
+              <tr>
+                <td style="width:300px">
+                    <mat-form-field  appearance="outline">
+                      <mat-select formControlName="employee_id" placeholder="Employee Name">
+                        <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_fname}}</mat-option>
+                      </mat-select>
+                   </mat-form-field>   
+                </td>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Previous Company Name</mat-label>
+                    <input formControlName="previous_company_name" type="text" placeholder="Previous Company Name"  matInput />
+                 </mat-form-field>
+                </td>
+
+               
+
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Previous Company Designation</mat-label>
+                    <input formControlName="previous_company_designation" type="text" placeholder="Previous Company Designation"  matInput />
+                </mat-form-field>
+                </td>
+                <td>                 
+                <mat-form-field appearance="outline">
+                    <mat-label>Prevoius Experience Start Date</mat-label>
+                    <input type="text" matInput formControlName="previous_experience_start_date" [matDatepicker]="picker" (click)="picker.open()" [max]="today"  readonly />
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker></mat-datepicker>
+                  </mat-form-field>
+                </td>
+               
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field appearance="outline" style="width:240px">
+                    <mat-label>Prevoius Experience End Date</mat-label>
+                    <input type="text" matInput formControlName="previous_experience_end_date" placeholder="prevoius_experience_end_date" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
+                    <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker2></mat-datepicker>
+            </mat-form-field>
+                      
+                </td>
+
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Employee Remarks</mat-label>
+                    <input formControlName="remarks" type="text" placeholder="Employee Remarks"  matInput />
+                 </mat-form-field>
+                </td>
+
+              </tr>
+              <tr>
+                <td>                   
+                   <!--<mat-form-field appearance="outline">
+                        <mat-label>Prevoius Experience End Date</mat-label>
+                        <input type="text" matInput formControlName="prevoius_experience_end_date" [matDatepicker]="picker" (click)="picker.open()" [max]="today" [max]="today" readonly />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                      </mat-form-field>
+                      --> 
+                </td>
+                <td>
+                   
+                </td>
+              </tr>              
+            </table>                  
+            <div class="card-footer">
+              <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(EmployeeExperience)"><i class="fa fa-ban"></i> Cancel</button>
+           </div> 
+          </form>        
+        </div>       
+      </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <mat-table [dataSource]="listdata" *ngIf="!loaded" >
+        <ng-container matColumnDef="emp_name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employee_fname}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="previous_company_name">
+            <mat-header-cell *matHeaderCellDef> Previous Company Name</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.previous_company_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="previous_company_designation">
+            <mat-header-cell *matHeaderCellDef>Previous Company Designation </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.previous_company_designation}} </mat-cell>
+        </ng-container>       
+        <ng-container matColumnDef="prevoius_experience_start_date">
+            <mat-header-cell *matHeaderCellDef> Prevoius Experience Start Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.previous_experience_start_date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="prevoius_experience_end_date">
+          <mat-header-cell *matHeaderCellDef> Prevoius Experience End Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.previous_experience_end_date}} </mat-cell>
+      </ng-container>  
+      <ng-container matColumnDef="employee_remarks">
+        <mat-header-cell *matHeaderCellDef> Employee Remarks</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.remarks}} </mat-cell>
+    </ng-container>
+     
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.employee_experience_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+                <!-- <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.employee_experience_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button> -->
+              </mat-cell>
+        </ng-container>
+        
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
+        

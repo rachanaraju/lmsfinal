@@ -1,0 +1,308 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+
+      <i class="icon-drop"></i> <strong> Company Profile
+      </strong>
+      <!--  <button [routerLink]="['/HR/CompanyBranch']" class="btn btn-sm btn-success">
+        Add Company branch
+      </button> -->
+    </div>
+    <div class="card-body">
+
+      <form #form="ngForm" [formGroup]="companyProfileForm">
+
+
+
+
+        <table>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input type="text" matInput formControlName="company_name" maxlength="50" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Registration Number</mat-label>
+                <input type="text" matInput formControlName="company_registration_number" maxlength="50" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <p class="logo"></p>
+            </td>
+            <td>
+              <!-- <input class="file" type="file" /> -->
+              <!-- <img [src] ="url" style="height: 100px; width: 100px; border-radius: 50%;">
+       <input type="file"  (change)="fileChangeEvent($event)"> -->
+
+
+              <!-- <input type="file" #fileUploader formControlName="company_logo" (change)="fileChangeEvent($event)"
+       class="fileInputProfile"> -->
+
+
+              <!-- <div class="upload-img" fxFlex='150px' (click)='triggerFalseClick()' fxLayout='row'
+                fxLayoutAlign="center center">
+                <img [src]="profileUrl || '../../pictures/r.jpg'" alt=""
+                  style="height: 150px; width: 150px; border-radius: 50%;" class='profile-img'>
+                <input #image type="file" accept="image/*" class='img-input' style="display: none;" fxFlex
+                  (change)="imageChanged($event)">
+                <div class='upload-hover-effect' fxLayout='column' fxLayoutAlign="center center">
+
+                   <span class="material-icons">
+                camera_alt
+                </span>
+                  <span>Upload Photo</span>
+                </div> 
+              </div>-->
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Address Line1</mat-label>
+                <input type="text" matInput formControlName="company_registered_address1" maxlength="200" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Address Line2</mat-label>
+                <input type="text" matInput formControlName="company_registered_address2" maxlength="200" />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Address Line3</mat-label>
+                <input type="text" matInput formControlName="company_registered_address3" maxlength="200" />
+              </mat-form-field>
+            </td>
+
+            <!-- <td> 
+=======
+>>>>>>> santosh
+<!--<td> 
+>>>>>>> 25e4bb7aa38032445171af692f3296c69a568d16
+  <mat-form-field class="example-full-width font-h1" appearance="outline">
+    <mat-label>Country</mat-label>
+       <mat-select formControlName="country" placeholder="Select"  [(ngModel)]="countryList" (ngModelChange)="countryChangeList()" required >
+           <mat-option *ngFor="let country of country" [value]="country.id">{{country.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</td> -->
+            <td>
+              <mat-form-field class="example-full-width font-h1" appearance="outline">
+                <mat-label>Country*</mat-label>
+                <input type="text" matInput [matAutocomplete]="auto" formControlName="country" />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let data of filteredOptions | async" [value]="data.name"
+                    (click)="countryChangeList(data.id)">
+                    {{data.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </td>
+
+          </tr>
+          <tr>
+
+            <td>
+              <mat-form-field class="example-full-width font-h1" appearance="outline">
+                <mat-label>State*</mat-label>
+                <input type="text" matInput [matAutocomplete]="auto2" formControlName="state" />
+                <mat-autocomplete #auto2="matAutocomplete">
+                  <mat-option *ngFor="let ss of filteredState | async" [value]="ss.name"
+                    (click)="stateChangeList(ss.id)">
+                    {{ss.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </td>
+            <!-- <td>    
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city" placeholder="Select" [(ngModel)]="cityList"  required>
+            <mat-option *ngFor="let cityName of cityNames" [value]="cityName.id">{{cityName.name}}</mat-option>
+         </mat-select>
+       </mat-form-field>
+    </td> -->
+            <td>
+              <mat-form-field class="example-full-width font-h1" appearance="outline">
+                <mat-label>City*</mat-label>
+                <input type="text" matInput [matAutocomplete]="auto3" formControlName="city" />
+                <mat-autocomplete #auto3="matAutocomplete">
+                  <mat-option *ngFor="let cc of filteredCity | async" [value]="cc.name">
+                    {{cc.name}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </td>
+
+
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>PIN Code</mat-label>
+                <input type="text" matInput formControlName="pincode" maxlength="50" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>GST No</mat-label>
+                <input type="text" matInput formControlName="gst_no" maxlength="50"  />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Website</mat-label>
+                <input type="text" matInput formControlName="website" maxlength="200" />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Contact Number</mat-label>
+                <input type="text" matInput formControlName="contact_no" maxlength="50" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Alternative Contact Number</mat-label>
+                <input type="text" matInput formControlName="alternative_contact_no" maxlength="50" />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Contact Person</mat-label>
+                <input type="text" matInput formControlName="contact_person" maxlength="50" required />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>TAN</mat-label>
+                <input type="text" matInput formControlName="tan" maxlength="50" />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>PAN</mat-label>
+                <input type="text" matInput formControlName="pan" maxlength="50" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email" maxlength="200" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Alternative Email</mat-label>
+                <input type="text" matInput formControlName="alternative_email" maxlength="200" />
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Type</mat-label>
+                <input type="text" matInput formControlName="company_type" maxlength="100" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Industry</mat-label>
+                <input type="text" matInput formControlName="industry" maxlength="100" required />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width font-h1" appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" placeholder="Select">
+                  <mat-option *ngFor="let status of Option" [value]="status">{{status}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field appearance="outline">
+                <mat-label>Remarks</mat-label>
+                <input type="text" matInput formControlName="remarks" maxlength="200" />
+              </mat-form-field>
+            </td>
+            <!--
+    <td>
+      <mat-form-field class="example-full-width font-h1" appearance="outline">
+        <input type="text" matInput [matAutocomplete]="auto1" [formControl]="extra" />
+        <mat-autocomplete #auto1="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </td>-->
+          </tr>
+        </table>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" type="submit" (click)="onSubmit()">
+            {{btnName}}
+          </button>
+          <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(companyProfileForm)"><i
+              class="fa fa-ban"></i> Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="controls">
+    <div class="input-group">
+      <!-- <input id="appendedInputButtons" size="16" class="form-control" type="text"> -->
+      <input #filter [(ngModel)]="id" (keyup)="applyFilter($event.target.value)" placeholder="Search" size="16"
+        class="form-control">
+      <span class="input-group-append">
+        <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <mat-table [dataSource]="listdata">
+    <ng-container matColumnDef="company_name">
+      <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.company_name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="company_registration_number">
+      <mat-header-cell *matHeaderCellDef> Registration Number</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.company_registration_number}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="company_type">
+      <mat-header-cell *matHeaderCellDef> Company Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.company_type}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.company_id)"><i
+            class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+        <!-- <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.company_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button> -->
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<form>
+  <mat-form-field>
+    <input type="text" matInput />
+    <mat-autocomplete>
+      <mat-option *ngFor="let option of abcd" value="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

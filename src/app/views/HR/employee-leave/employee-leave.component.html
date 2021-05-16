@@ -1,0 +1,176 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Employee Leave</strong> 
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" [formGroup]="employeeLeaveForm" action="" method="post">
+          <table>
+            <tr>
+              <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                <mat-label>Employee Id</mat-label>
+                <input matInput formControlName="employee_id" type="text"/>
+            </mat-form-field> 
+        </td>
+          <!-- <div class="form-group">
+            <label for="nf-email">Employee Id</label>
+            <input type="text" class="form-control" matInput formControlName="employee_id" placeholder="Enter Employee Id" required>
+          </div> -->
+          <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+            <mat-label>Manager Id</mat-label>
+            <input matInput formControlName="manager_id" type="text"/>
+        </mat-form-field> 
+    </td>
+
+          <!-- <div class="form-group">
+            <label for="nf-email">Manager</label>
+            <input type="text" class="form-control" matInput formControlName="manager_id" placeholder="Enter Manager" required>
+          </div> -->
+
+          <td>
+            <mat-form-field appearance="outline" style="width:240px">
+                <mat-label>Date of Applied</mat-label>
+                <input type="text" matInput formControlName="date_of_applied" placeholder="Date of Applied" [matDatepicker]="picker" (click)="picker.open()"   readonly />
+                <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+        </mat-form-field> 
+        </td>
+        <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+          <mat-label>Number of Leaves</mat-label>
+          <input  matInput formControlName="number_of_leaves" type="text"/>
+      </mat-form-field> 
+  </td>
+  </tr>
+          <!-- <div class="form-group">
+            <label for="nf-email">No of Leaves</label>
+            <input type="text" class="form-control" matInput formControlName="no_of_leaves" placeholder="Enter No of Leaves" required>
+          </div> -->
+<tr>
+  <td>
+    <mat-form-field appearance="outline" style="width:240px">
+        <mat-label>From</mat-label>
+        <input type="text" matInput formControlName="from_date" placeholder="From" [matDatepicker]="picker1" (click)="picker1.open()"   readonly />
+        <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+</mat-form-field> 
+</td>
+<td>
+  <mat-form-field appearance="outline" style="width:240px">
+      <mat-label>To</mat-label>
+      <input type="text" matInput formControlName="to_date" placeholder="To" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
+      <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker2></mat-datepicker>
+</mat-form-field> 
+
+
+</td>
+<td>      
+  <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
+   <mat-label>Status</mat-label>
+        <mat-select formControlName="status" placeholder="Select" >
+          <mat-option *ngFor="let status of Option" [value]="status" >{{status}}</mat-option>
+       </mat-select>
+   </mat-form-field>
+</td> 
+          <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+            <mat-label>Comments</mat-label>
+            <input matInput formControlName="comments" type="text"/>
+        </mat-form-field> 
+    </td>
+    
+
+          <!-- <div class="form-group">
+            <label for="nf-email">Comments</label>
+            <input type="text" class="form-control" matInput formControlName="comments" placeholder="Enter Comments" required>
+          </div> -->
+          
+        </tr>
+      </table>
+          
+          
+        </form>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(employeeLeaveForm)"><i class="fa fa-ban"></i> Cancel</button>
+      </div>
+    </div>
+    </div>
+    <div class="animated fadeIn">
+      <div class="card">
+        <div class="card-header">
+      <i class="icon-drop"></i> <strong>Employee Leaves</strong> 
+      <mat-table [dataSource]="listdata"  >
+        <ng-container matColumnDef="employee_id">
+            <mat-header-cell *matHeaderCellDef> Employee Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employee_id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="manager_id">
+          <mat-header-cell *matHeaderCellDef> Manager </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.manager_id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="number_of_leaves">
+        <mat-header-cell *matHeaderCellDef> Number of Leaves </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.number_of_leaves}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+  </ng-container>
+    
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+
+
+              
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditClick(element.employye_leave_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+            </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
+
+    
+
+
+    <!-- <div class="card"> -->
+      <div class="animated fadeIn">
+        <div class="card">
+          <div class="card-header">
+            <i class="icon-drop"></i> <strong>Manager Leaves</strong> 
+     
+      <mat-table [dataSource]="listdata1"  >
+        <ng-container matColumnDef="employee_id">
+            <mat-header-cell *matHeaderCellDef> Employee Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employee_id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="manager_id">
+          <mat-header-cell *matHeaderCellDef> Manager </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.manager_id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="number_of_leaves">
+        <mat-header-cell *matHeaderCellDef> Number of Leaves </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.number_of_leaves}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+  </ng-container>
+    
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEmpEditBtnClick(element.employee_leave_id,element.manager_id,element.status)" ><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+              <!-- <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.role_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button>  -->
+            </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns1"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns1;"></mat-row>
+    </mat-table>
+    </div> 
+
+    

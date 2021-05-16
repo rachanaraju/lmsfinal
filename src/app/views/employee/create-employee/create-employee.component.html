@@ -1,0 +1,350 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Create Employee</strong> 
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" [formGroup]="employeeCreateForm" >
+            <div class="row">
+
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Employee Name</mat-label>
+                    <input type="text" matInput formControlName="employee_name" maxlength="20" required/>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.employee_name.touched || submitted) && myForm.employee_name.errors?.required" class="alert alert-danger">
+                    Name is required.
+                  </div> 
+                  <div *ngIf="(myForm.employee_name.touched || submitted) && myForm.employee_name.errors?.pattern" class="alert alert-danger">
+                    Enter only alphabets.
+                  </div>
+                </div>
+              </div> 
+
+              <!-- <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Employee Number</mat-label>
+                    <input type="number" matInput formControlName="emp_num"required/>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.emp_name.touched || submitted) && myForm.emp_name.errors?.required" class="alert alert-danger">
+                    Employee Number is required.
+                  </div> 
+                </div>
+              </div>  -->
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-label>Department Name</mat-label>
+                    <mat-select formControlName="department_id" placeholder="Department Name">                      
+                    <mat-option *ngFor="let department of department"  [value]="department.department_id">{{department.department_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <!-- <div *ngIf="(myForm.department_id.touched || submitted) && myForm.department_id.errors?.required" class="alert alert-danger">
+                    Department ID is required.
+                  </div>  -->
+                </div>
+              </div> 
+
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="role_id" placeholder="Role Name">
+                    <mat-option *ngFor="let role of role"  [value]="role.role_id">{{role.role_description}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <!-- <div *ngIf="(myForm.role_id.touched || submitted) && myForm.role_id.errors?.required" class="alert alert-danger">
+                    Role ID is required.
+                  </div>  -->
+                </div>
+              </div> 
+
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="designation_id" placeholder="Designation Name">
+                    <mat-option *ngFor="let designation of designation"  [value]="designation.designation_id">{{designation.designation_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <!-- <div *ngIf="(myForm.designation_id.touched || submitted) && myForm.designation_id.errors?.required" class="alert alert-danger">
+                    Designation ID is required.
+                  </div>  -->
+                </div>
+              </div> 
+
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Reporting Manager Name</mat-label>
+                    <input type="text" matInput formControlName="reporting_manager_id"required/>
+                  </mat-form-field>
+                  <!-- <div *ngIf="(myForm.reporting_manager_id.touched || submitted) && myForm.reporting_manager_id.errors?.required" class="alert alert-danger">
+                    Reporting Manager ID is required.
+                  </div>  -->
+                </div>
+              </div> 
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="gender" placeholder="Gender">
+                    <mat-option *ngFor="let gender of gender"  [value]="gender">{{gender}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <!-- <div *ngIf="(myForm.gender.touched || submitted) && myForm.gender.errors?.required" class="alert alert-danger">
+                     Gender is required.
+                  </div>  -->
+                </div>
+              </div> 
+            </div>  
+            <div class="row">
+
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="company_id" placeholder="Company Name">
+                    <mat-option *ngFor="let company of company"  [value]="company.company_id">{{company.company_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                  <!-- <div *ngIf="(myForm.company_id.touched || submitted) && myForm.company_id.errors?.required" class="alert alert-danger">
+                    Company ID is required.
+                  </div>  -->
+                </div>
+              </div> 
+              
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input type="text" matInput formControlName="date_of_birth" [matDatepicker]="picker" (click)="picker.open()" [max]="today"  readonly />
+                    <mat-datepicker-toggle matSuffix [for]="picker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Date of Joining</mat-label>
+                    <input type="text" matInput formControlName="joining_date" placeholder="Date of Joining *" [matDatepicker]="picker1" (click)="picker1.open()" [max]="today"  readonly />
+                    <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
+                    <mat-datepicker touchUi #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Employee Status</mat-label>
+                    <input type="text" matInput formControlName="employee_status"required/>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.employee_status.touched || submitted) && myForm.employee_status.errors?.required" class="alert alert-danger">
+                    Employee status is required.
+                  </div> 
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Blood Group</mat-label>
+                    <select matNativeControl formControlName="blood_group" >
+                      <option value="" disabled></option>
+                      <option *ngFor="let option of Option" [ngValue]="option">{{option}}</option>
+                    </select>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.blood_group.touched || submitted) && myForm.blood_group.errors?.required">
+                    <div *ngIf="submitted && myForm.blood_group.errors" class="error-block">
+                      <div *ngIf="myForm.blood_group.errors.pattern">
+                        Enter only alphabets.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="employee_category_id" placeholder="Employee Category Name">
+                    <mat-option *ngFor="let employee_category of employee_category"  [value]="employee_category.employee_category_id">{{employee_category.employee_category_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>HR Point of Contact Name</mat-label>
+                    <input type="text" matInput formControlName="hr_point_of_contact_id" />
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <br>
+            <h3><span class="sub-head">ADDITIONAL DETAILS</span></h3>
+            <div class="row">
+
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Marital Status</mat-label>
+                    <input type="text" matInput formControlName="marital_status"required/>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.marital_status.touched || submitted) && myForm.marital_status.errors?.required" class="alert alert-danger">
+                    Marital status is required.
+                  </div> 
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nationality</mat-label>
+                    <input type="text" matInput formControlName="nationality"required/>
+                  </mat-form-field>
+                  <div *ngIf="(myForm.nationality.touched || submitted) && myForm.nationality.errors?.required" class="alert alert-danger">
+                    Nationality is required.
+                  </div> 
+                </div>
+              </div> 
+              <!-- <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field  appearance="outline">
+                    <mat-label>Base Location</mat-label>
+                    <mat-select formControlName="base_location" placeholder="Base Location">                      
+                    <mat-option *ngFor="let locationName of locationName"  [value]="locationName.city">{{locationName.city}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                </div>
+              </div> -->
+            </div>
+              <!-- <div class="col-12 col-md-4">
+                <div class="form-group row-space">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Photo</mat-label>
+                    <input type="file" required/>
+                  </mat-form-field>
+                </div>
+              </div> -->
+
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Passport Number</mat-label>
+                            <input type="text" matInput formControlName="passport_number" />
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Aadhar Number</mat-label>
+                            <input type="number" matInput formControlName="aadhar_card_number" />
+                          </mat-form-field>
+                          <div *ngIf="(myForm.aadhar_card_number.touched || submitted) && myForm.aadhar_card_number.errors?.pattern" class="alert alert-danger">
+                            Enter valid Aadhar Number.
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+             
+                <!-- <h3><span class="sub-head">BANK DETAILS</span></h3> -->
+                    <!-- <div class="row">
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Bank Account Number</mat-label>
+                            <input type="number" matInput formControlName="bankac" />
+                          </mat-form-field>
+                          <div *ngIf="(myForm.bankac.touched || submitted) && myForm.bankac.errors?.pattern" class="alert alert-danger">
+                            Enter valid Bank Account Number.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>IFSC code</mat-label>
+                            <input type="text" matInput formControlName="bankifsc" />
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>UPI code</mat-label>
+                            <input type="text" matInput formControlName="bankupi" />
+                          </mat-form-field>
+                        </div>
+                      </div> 
+                    </div>                  -->
+                    <div class="row">
+                     
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>PAN number</mat-label>
+                            <input type="text" matInput formControlName="pan_card_number" />
+                          </mat-form-field>
+                          <div *ngIf="submitted && myForm.pan_card_number.errors" class="error-block">
+                            <div *ngIf="myForm.pan_card_number.errors.pattern">
+                              Enter valid PAN Number.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   
+                    <br>
+                  
+                  <!-- <h3><span class="sub-head">MISCELLANEOUS DETAILS</span></h3> -->
+                  
+                    <!-- <div class="row">
+                        <div class="col-12 col-md-4">
+                          <div class="form-group row-space">
+                            <mat-form-field appearance="outline">
+                              <mat-label>Referral Details</mat-label>
+                              <input type="text" matInput formControlName="referred" />
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      <div class="col-12 col-md-4">
+                        <div class="form-group row-space">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Comments</mat-label>
+                            <input type="text" matInput formControlName="comments"/>
+                          </mat-form-field>
+                          <div *ngIf="submitted && myForm.comments.errors" class="error-block">
+                            <div *ngIf="myForm.comments.errors.pattern">
+                              Enter valid name.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div> -->
+              </div>
+           
+            <br><br>
+            <div class="row">
+              <div style='padding-left: 20px;' class="form-group btns" fxLayout='row' fxLayoutGap='10px' fxLayoutALign='center center'>
+                <button fxFlex type="reset" class="btn btn-warning cancel btn-lg font-h1">
+                    Cancel
+                </button>
+                <button fxFlex class="btn btn-success btn-lg font-h1 "  type="submit" (click)="onSubmit()">
+                    Submit
+                </button>
+            </div>
+            </div>
+          </form>
+      </div>
+     
+    </div>
+    </div>

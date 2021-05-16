@@ -1,0 +1,52 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Role Master</strong> 
+      </div>
+      <div class="card-body">
+        <form #form="ngForm" [formGroup]="roleMasterForm" action="" method="post">
+
+          <div class="form-group">
+            <label for="nf-email">Role Name</label>
+            <input type="text" class="form-control" matInput formControlName="role_name" placeholder="Enter Role Name" required/>
+          </div>
+          <div class="form-group">
+            <label for="nf-email">Role Description</label>
+            <input type="text" class="form-control" matInput formControlName="role_description" placeholder="Enter Role Description" required/>
+          </div>
+
+          
+          
+        </form>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(roleMasterForm)"><i class="fa fa-ban"></i> Cancel</button>
+      </div>
+    </div>
+    </div>
+    <div class="card">
+      <mat-table [dataSource]="listdata"  >
+        <ng-container matColumnDef="role_name">
+            <mat-header-cell *matHeaderCellDef> Role Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.role_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role_description">
+          <mat-header-cell *matHeaderCellDef> Role Description</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.role_description}} </mat-cell>
+      </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.role_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+              <!-- <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.role_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button> -->
+            </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
+
+
+
+    

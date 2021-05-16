@@ -1,0 +1,125 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Employee Qualification</strong> 
+      </div>
+      <div class="card-body">
+          <form #form="ngForm" [formGroup]="EmployeeQualification" >
+            <table>
+                <tr>
+                    <td style="width:300px">
+                        <mat-form-field  appearance="outline">
+                            <mat-select formControlName="employee_id" placeholder="Employee Name">
+                            <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field  appearance="outline">
+                            <mat-select formControlName="qualification_type_id" placeholder="Qualification Type">
+                            <mat-option *ngFor="let qualification_type of qualification_type"  [value]="qualification_type.qualification_type_id">{{qualification_type.qualification_type}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field  appearance="outline">
+                            <mat-select formControlName="qualification_specialization_id" placeholder="Qualification Specialization Type">
+                            <mat-option *ngFor="let qualification_spec of qualification_spec"  [value]="qualification_spec.qualification_specialization_id">{{qualification_spec.qualification_specialization_type}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                            <mat-label>Year Of Passing</mat-label>
+                            <input formControlName="year_of_pass" type="text" placeholder="Year Of Pass"  matInput />
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                            <mat-label>Specialization</mat-label>
+                            <input formControlName="specialization" type="text" placeholder="Specialization"  matInput />
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                            <mat-label>Institute Name</mat-label>
+                            <input formControlName="institute_name" type="text" placeholder="Institute Name"  matInput />
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                            <mat-label>University</mat-label>
+                            <input formControlName="university" type="text" placeholder="University"  matInput />
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                            <mat-label>Grade</mat-label>
+                            <input formControlName="grade" type="text" placeholder="Grade"  matInput />
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+                <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(EmployeeQualification)"><i class="fa fa-ban"></i> Cancel</button>
+             </div> 
+          </form>
+      </div>
+    </div>
+</div>
+
+          <div class="mat-elevation-z8">
+            <mat-table [dataSource]="listdata" *ngIf="!loaded" >
+                <ng-container matColumnDef="employee_name">
+                    <mat-header-cell *matHeaderCellDef> Employee Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.employee_name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="qualification_type">
+                    <mat-header-cell *matHeaderCellDef> Qualification Type</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.qualification_type}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="qualification_specialization_type">
+                    <mat-header-cell *matHeaderCellDef>Specialization Type</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.qualification_specialization_type}} </mat-cell>
+                </ng-container>       
+                <ng-container matColumnDef="year_of_pass">
+                    <mat-header-cell *matHeaderCellDef> Year of Pass </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.year_of_pass}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="specialization">
+                  <mat-header-cell *matHeaderCellDef> specialization </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.specialization}} </mat-cell>
+              </ng-container>  
+              <ng-container matColumnDef="institute_name">
+                <mat-header-cell *matHeaderCellDef> Institute </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.institute_name}} </mat-cell>
+            </ng-container> 
+            <ng-container matColumnDef="university">
+                <mat-header-cell *matHeaderCellDef> University </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.university}} </mat-cell>
+            </ng-container> 
+            <ng-container matColumnDef="grade">
+                <mat-header-cell *matHeaderCellDef> Grade </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.grade}} </mat-cell>
+            </ng-container>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> 
+                        <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.employee_qualification_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+                        <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.employee_qualification_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button>
+                      </mat-cell>
+                </ng-container>
+                
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            </div>
+       
+  

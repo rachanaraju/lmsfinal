@@ -1,0 +1,91 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Employee Promotion</strong> 
+      </div>
+      <div class="card-body">
+          <form class="form-horizontal" #form="ngForm" [formGroup]="EmployeePromotion" >   
+              <table>
+                  <tr>
+                      <td style="width:300px">
+                          <mat-form-field  appearance="outline"  style="width:240px">
+                         <mat-select formControlName="employee_id" placeholder="Employee Name" >
+                         <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_fname}}</mat-option>
+                         </mat-select>
+                        </mat-form-field>
+                   </td>
+                      <td>
+                          <mat-form-field  appearance="outline">
+                          <mat-select formControlName="designation_id" placeholder="Designation Name">
+                         <mat-option *ngFor="let designation of designation"  [value]="designation.designation_id">{{designation.designation_name}}</mat-option>
+                         </mat-select>
+                    </mat-form-field> 
+                </td>
+                <td>
+                    <mat-form-field  appearance="outline">
+                    <mat-select formControlName="level" placeholder="Level">
+                   <mat-option *ngFor="let designation of designation"  [value]="designation.level">{{designation.level}}</mat-option>
+                   </mat-select>
+              </mat-form-field> 
+          </td>
+                </tr>
+                <tr>
+                    <td> <mat-form-field appearance="outline">
+                        <mat-label>Effective Promotion Date</mat-label>
+                        <input type="text" matInput formControlName="effective_promotion_date" [matDatepicker]="picker" (click)="picker.open()" [max]="today"  readonly />
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                      </mat-form-field>
+                    </td>
+                    <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                        <mat-label>Compensation Percentage</mat-label>
+                        <input formControlName="compensation_percentage" type="text"  matInput />
+                    </mat-form-field> 
+                </td>
+              </tr>
+              </table>
+                      
+           <div class="card-footer">
+               <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+               <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(EmployeePromotion)"><i class="fa fa-ban"></i> Cancel</button>
+            </div>            
+          </form>
+     </div>
+     </div>
+ </div>
+ <div class="mat-elevation-z8">
+    <mat-table [dataSource]="listdata" *ngIf="!loaded" >
+        <ng-container matColumnDef="emp_name">
+            <mat-header-cell *matHeaderCellDef> Employee Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employee_fname}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="designation_name">
+            <mat-header-cell *matHeaderCellDef> Designation</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.designation_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="level">
+            <mat-header-cell *matHeaderCellDef> Designation Level</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.level}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="effective_promotion_date">
+            <mat-header-cell *matHeaderCellDef>Promotion Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.effective_promotion_date}} </mat-cell>
+        </ng-container>       
+        <ng-container matColumnDef="compensation_percentage">
+            <mat-header-cell *matHeaderCellDef> Percentage </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.compensation_percentage}} </mat-cell>
+        </ng-container>
+               
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.promotion_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+                <!-- <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.promotion_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button> -->
+              </mat-cell>
+        </ng-container>
+        
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>

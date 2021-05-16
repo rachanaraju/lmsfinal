@@ -1,0 +1,74 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <i class="icon-drop"></i> <strong> leave-apply
+            </strong>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="LeaveApplyForm">
+
+                <table class=" table  table-sm table-borderless">
+                    <tr>
+                        <td> User Name </td>
+                        <td>
+                            <mat-form-field class="example-full-width font-h1" appearance="outline">
+                                <input formControlName="emp_name" type="text" placeholder="User Name" matInput />
+                            </mat-form-field>
+                        </td>
+
+                        <td>Leave Type</td>
+                        <td>
+                            <mat-form-field class="example-full-width font-h1" appearance="outline">
+                                <mat-select formControlName="leave_type" placeholder="Select">
+                                    <mat-option *ngFor="let leave of Option" [value]="leave">{{leave}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>From date</td>
+                        <td>
+                            <mat-form-field appearance="outline" class="example-full-width font-h1">
+                                <mat-label>mm/dd/yyyy</mat-label>
+                                <input type="text" matInput formControlName="start_date" [matDatepicker]="picker2"
+                                    (click)="picker2.open()" [max]="today" readonly />
+                                <mat-datepicker-toggle matSuffix [for]="picker2">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker2></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+
+                        <td>To date</td>
+                        <td>
+                            <mat-form-field appearance="outline" class="example-full-width font-h1">
+                                <mat-label>mm/dd/yyyy</mat-label>
+                                <input type="text" matInput formControlName="end_date" [matDatepicker]="picker"
+                                    (click)="picker.open()" [max]="today" readonly />
+                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                </mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Leave Reason</td>
+                        <td>
+                            <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                                <input formControlName="leave_desc" type="text" placeholder="Leave Reason" matInput />
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button fxFlex class="btn btn-sm btn-primary" type="submit" (click)="onSubmit()">
+                Submit
+            </button>
+            <button fxFlex type="reset" class="btn btn-sm btn-danger">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="icon-drop"></i> <strong>Employee Performance</strong> 
+    </div>
+    <div class="card-body">
+       <form #form="ngForm" [formGroup]="EmployeePerformance" >
+          <table>
+            <tr>
+              <td style="width:300px">
+                  <mat-form-field  appearance="outline">
+                    <mat-select formControlName="employee_id" placeholder="Employee Name">
+                      <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_name}}</mat-option>
+                    </mat-select>
+                 </mat-form-field>   
+              </td>
+              <td>
+                <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                  <mat-label>Assessment Year</mat-label>
+                  <input formControlName="assessment_year" type="text" placeholder="Assessment Year"  matInput />
+               </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                  <mat-label>Performance Rating</mat-label>
+                  <input formControlName="performance_rating" type="text" placeholder="Performance Rating"  matInput />
+              </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                  <mat-label>Increment Percentage</mat-label>
+                  <input formControlName="increment_percentage" type="text" placeholder="Increment Percentage"  matInput />
+              </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                  <mat-label>Bonus Percentage</mat-label>
+                  <input formControlName="bonus_percentage" type="text" placeholder="Bonus Percentage"  matInput />
+              </mat-form-field>
+              </td>
+              <td>
+                
+              </td>
+            </tr>
+          </table>                  
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+            <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(EmployeePerformance)"><i class="fa fa-ban"></i> Cancel</button>
+         </div> 
+        </form>        
+      </div>       
+    </div>
+</div>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="listdata" *ngIf="!loaded" >
+      <ng-container matColumnDef="emp_name">
+          <mat-header-cell *matHeaderCellDef> Employee Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.employee_name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="assessment_year">
+          <mat-header-cell *matHeaderCellDef> Assessment Year</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.assessment_year}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="performance_rating">
+          <mat-header-cell *matHeaderCellDef>Performance Rating </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.performance_rating}} </mat-cell>
+      </ng-container>       
+      <ng-container matColumnDef="increment_percentage">
+          <mat-header-cell *matHeaderCellDef> Increment Percentage </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.increment_percentage}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="bonus_percentage">
+        <mat-header-cell *matHeaderCellDef> Bonus Percentage </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bonus_percentage}} </mat-cell>
+    </ng-container>  
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.employee_performance_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+              <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.employee_performance_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button>
+            </mat-cell>
+      </ng-container>
+      
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  </div>
+      

@@ -1,0 +1,94 @@
+<div class="animated fadeIn">
+<div class="card">
+  <div class="card-header">
+    <i class="icon-drop"></i> <strong>Department</strong> 
+  </div>
+  <div class="card-body">
+    <form #form="ngForm" [formGroup]="departmentCreateForm" >
+      <table>
+        <tr>
+          <td>  
+           <mat-form-field appearance="outline">
+            <mat-label>Department Name</mat-label>
+            <input type="text" matInput formControlName="department_name" maxlength="100" required />
+          </mat-form-field>
+        </td>
+        <td>  
+          <mat-form-field appearance="outline">
+           <mat-label>Department Code</mat-label>
+           <input type="text"  matInput formControlName="department_code" maxlength="100" required />
+         </mat-form-field>
+       </td>
+       <td>
+        <mat-form-field  appearance="outline">
+          <mat-label>Department Head</mat-label>
+          <mat-select formControlName="department_head" placeholder="Department Head">                      
+            <mat-option *ngFor="let employee of employee"  [value]="employee.department_head">{{employee.department_head}}</mat-option>                   
+          </mat-select>
+      </mat-form-field>
+      </td>
+    </tr>
+    <tr>      
+      <td>
+        <mat-form-field  appearance="outline">
+          <mat-label>Department Type</mat-label>
+          <mat-select formControlName="department_type" placeholder="Department Type">                      
+          <mat-option *ngFor="let departmentName of departmentName"  [value]="departmentName.department_name">{{departmentName.department_name}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field  appearance="outline">
+          <mat-label>Department Location</mat-label>
+          <mat-select formControlName="department_location" placeholder="Department Location">                      
+          <mat-option *ngFor="let locationName of locationName"  [value]="locationName.city">{{locationName.city}}</mat-option>
+          </mat-select>
+      </mat-form-field>
+      </td>      
+    </tr>   
+      </table>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-primary" type="submit"  (click)="onSubmit()">
+          {{btnName}}
+        </button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(departmentCreateForm)"><i class="fa fa-ban"></i> Cancel</button>
+      </div>
+    </form>
+  </div>
+  
+
+</div>
+</div>
+
+<div class="form-group"> 
+  <div class="controls">
+    <div class="input-group">     
+     
+     <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+       <span class="input-group-append">
+        <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+      </span> 
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <mat-table [dataSource]="listdata"  >
+    <ng-container matColumnDef="department_name">
+        <mat-header-cell *matHeaderCellDef> Department Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.department_name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="department_head">
+      <mat-header-cell *matHeaderCellDef> Department Head </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.employee_name}} </mat-cell>     
+  </ng-container>
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.department_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>          
+        </mat-cell>
+    </ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+</div>

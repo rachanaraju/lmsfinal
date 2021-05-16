@@ -1,0 +1,136 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Employee Contacts</strong> 
+      </div>
+      <div class="card-body">
+         <form #form="ngForm" [formGroup]="EmployeeContact" >
+            <table>
+              <tr>
+                <td style="width:300px">
+                    <mat-form-field  appearance="outline">
+                      <mat-select formControlName="employee_id" placeholder="Employee Name">
+                        <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_name}}</mat-option>
+                      </mat-select>
+                   </mat-form-field>   
+                </td>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input formControlName="mobile_phone" type="text" placeholder="Mobile"  matInput />
+                 </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Home Phone</mat-label>
+                    <input formControlName="home_phone" type="text" placeholder="Home Phone"  matInput />
+                </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Alternative Contact Number</mat-label>
+                    <input formControlName="alternative_contact_number" type="text" placeholder="Alternative Contact Number "  matInput />
+                </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Personal Email</mat-label>
+                    <input formControlName="personal_email" type="text" placeholder="Personal Email"  matInput />
+                </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                        <mat-label>Official Email</mat-label>
+                        <input formControlName="official_email" type="text" placeholder="Official Email"  matInput />
+                    </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                    <mat-label>Contact Type</mat-label>
+                    <input formControlName="contact_type" type="text" placeholder="Contact Type"  matInput />
+                </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                        <mat-label>Relationship</mat-label>
+                        <input formControlName="contact_relationship" type="text" placeholder="Relationship"  matInput />
+                    </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                    <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
+                        <mat-label>Relation Name</mat-label>
+                        <input formControlName="contact_relation_name" type="text" placeholder="Relation Name"  matInput />
+                    </mat-form-field>
+                  </td>
+                  <td>
+
+                  </td>
+              </tr>
+            </table>                  
+            <div class="card-footer">
+              <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(EmployeeContact)"><i class="fa fa-ban"></i> Cancel</button>
+           </div> 
+          </form>        
+        </div>       
+      </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <mat-table [dataSource]="listdata" *ngIf="!loaded" >
+        <ng-container matColumnDef="employee_name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employee_name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="mobile_phone">
+            <mat-header-cell *matHeaderCellDef> Mobile</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.mobile_phone}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="home_phone">
+            <mat-header-cell *matHeaderCellDef>Home Phone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.home_phone}} </mat-cell>
+        </ng-container>       
+        <ng-container matColumnDef="alternative_contact_number">
+            <mat-header-cell *matHeaderCellDef> Alternative contact </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.alternative_contact_number}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="personal_email">
+          <mat-header-cell *matHeaderCellDef> Personal Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.personal_email}} </mat-cell>
+      </ng-container>  
+      <ng-container matColumnDef="official_email">
+        <mat-header-cell *matHeaderCellDef> Official Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.official_email}} </mat-cell>
+    </ng-container> 
+    <!-- <ng-container matColumnDef="contact_type">
+        <mat-header-cell *matHeaderCellDef> Contact Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.contact_type}} </mat-cell>
+    </ng-container> --> 
+    <ng-container matColumnDef="contact_relationship">
+      <mat-header-cell *matHeaderCellDef> Relation </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.contact_relationship}} </mat-cell>
+  </ng-container> 
+  <ng-container matColumnDef="contact_relation_name">
+    <mat-header-cell *matHeaderCellDef> Relation Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.contact_relation_name}} </mat-cell>
+</ng-container> 
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.employee_contact_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+                <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.employee_contact_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button>
+              </mat-cell>
+        </ng-container>
+        
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
+        

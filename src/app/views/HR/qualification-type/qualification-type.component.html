@@ -1,0 +1,36 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        <i class="icon-drop"></i> <strong>Qualification</strong> 
+      </div>
+      <div class="card-body">
+        <form  #form="ngForm" [formGroup]="qualificationTypeCreateForm" action="" method="post">
+          <div class="form-group">
+            <label for="nf-email">Qualification Type</label>
+            <input type="text" matInput formControlName="qualification_type" class="form-control" placeholder="Enter Qualification Type" required>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(qualificationTypeCreateForm)"><i class="fa fa-ban"></i> Cancel</button>
+      </div>
+    </div>
+    </div>
+    <div class="card">
+      <mat-table [dataSource]="listdata"  >
+        <ng-container matColumnDef="qualification_type">
+            <mat-header-cell *matHeaderCellDef> Qualification Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.qualification_type}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.qualification_type_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+              <button type="button" class="btn btn-sm btn-danger m-2" (click)="onDeleteBtnClick(element.qualification_type_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Delete</button>
+            </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    </div>
