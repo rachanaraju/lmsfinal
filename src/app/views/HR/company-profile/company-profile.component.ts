@@ -93,7 +93,7 @@ stateId:any;
     alternative_email: ['', [Validators.pattern(this.emailPattern)]],
     company_type:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
     industry:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
-    status:['',Validators.required], 
+    status:[''], 
     remarks:['', [Validators.pattern('^[a-zA-Z, ]*$')]],
     created_by:['']     
     });

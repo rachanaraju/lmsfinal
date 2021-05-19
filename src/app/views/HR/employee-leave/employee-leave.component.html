@@ -9,7 +9,7 @@
             <tr>
               <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                 <mat-label>Employee Id</mat-label>
-                <input matInput formControlName="employee_id" type="text"/>
+                <input matInput formControlName="employee_id" type="text" required/>
             </mat-form-field> 
         </td>
           <!-- <div class="form-group">
@@ -18,7 +18,7 @@
           </div> -->
           <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
             <mat-label>Manager Id</mat-label>
-            <input matInput formControlName="manager_id" type="text"/>
+            <input matInput formControlName="manager_id" type="text" required/>
         </mat-form-field> 
     </td>
 
@@ -29,7 +29,7 @@
 
           <td>
             <mat-form-field appearance="outline" style="width:240px">
-                <mat-label>Date of Applied</mat-label>
+                <mat-label>Date of Applied*</mat-label>
                 <input type="text" matInput formControlName="date_of_applied" placeholder="Date of Applied" [matDatepicker]="picker" (click)="picker.open()"   readonly />
                 <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker></mat-datepicker>
@@ -37,7 +37,7 @@
         </td>
         <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
           <mat-label>Number of Leaves</mat-label>
-          <input  matInput formControlName="number_of_leaves" type="text"/>
+          <input  matInput formControlName="number_of_leaves" type="text" required/>
       </mat-form-field> 
   </td>
   </tr>
@@ -48,7 +48,7 @@
 <tr>
   <td>
     <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>From</mat-label>
+        <mat-label>From*</mat-label>
         <input type="text" matInput formControlName="from_date" placeholder="From" [matDatepicker]="picker1" (click)="picker1.open()"   readonly />
         <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
         <mat-datepicker touchUi #picker1></mat-datepicker>
@@ -56,7 +56,7 @@
 </td>
 <td>
   <mat-form-field appearance="outline" style="width:240px">
-      <mat-label>To</mat-label>
+      <mat-label>To*</mat-label>
       <input type="text" matInput formControlName="to_date" placeholder="To" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
       <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
       <mat-datepicker touchUi #picker2></mat-datepicker>
@@ -66,7 +66,7 @@
 </td>
 <td>      
   <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-   <mat-label>Status</mat-label>
+   <mat-label>Status*</mat-label>
         <mat-select formControlName="status" placeholder="Select" >
           <mat-option *ngFor="let status of Option" [value]="status" >{{status}}</mat-option>
        </mat-select>
@@ -96,17 +96,27 @@
       </div>
     </div>
     </div>
+    <div class="form-group"> 
+      <div class="controls">
+        <div class="input-group">       
+          <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+          <span class="input-group-append">
+            <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+          </span> 
+        </div>
+      </div>
+    </div> 
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">
-      <i class="icon-drop"></i> <strong>Employee Leaves</strong> 
+      <i class="icon-drop"></i> <strong>Manager Leaves</strong> 
       <mat-table [dataSource]="listdata"  >
         <ng-container matColumnDef="employee_id">
             <mat-header-cell *matHeaderCellDef> Employee Id </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.employee_id}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="manager_id">
-          <mat-header-cell *matHeaderCellDef> Manager </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Manager Id </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.manager_id}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="number_of_leaves">
@@ -140,7 +150,7 @@
       <div class="animated fadeIn">
         <div class="card">
           <div class="card-header">
-            <i class="icon-drop"></i> <strong>Manager Leaves</strong> 
+            <i class="icon-drop"></i> <strong>Employee Leaves</strong> 
      
       <mat-table [dataSource]="listdata1"  >
         <ng-container matColumnDef="employee_id">
@@ -148,7 +158,7 @@
             <mat-cell *matCellDef="let element"> {{element.employee_id}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="manager_id">
-          <mat-header-cell *matHeaderCellDef> Manager </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef> Manager Id </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.manager_id}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="number_of_leaves">

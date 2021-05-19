@@ -68,7 +68,7 @@ stateId:any;
     alternative_contact_no:['',[,Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
     email: ['', [Validators.pattern(this.emailPattern), Validators.required]],
     alternative_email: ['', [Validators.pattern(this.emailPattern)]],
-    status:['',Validators.required]
+    status:['']
   });
   ngOnInit(): void {
    

@@ -31,7 +31,7 @@
       </td>
       <td>
         <mat-form-field appearance="outline" style="width:240px">
-           <mat-label>Employee Code</mat-label>
+           <mat-label>Employee Code*</mat-label>
            <input type="text"  matInput formControlName="employee_code"  maxlength="50"  />
        </mat-form-field>
    </td>  
@@ -39,7 +39,7 @@
     <tr>
         <td > 
             <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Department </mat-label>
+                <mat-label>Department* </mat-label>
                 <mat-select formControlName="department_id" placeholder="Department">                      
                 <mat-option *ngFor="let department of department"  [value]="department.department_id">{{department.department_name}}</mat-option>
                 </mat-select>
@@ -47,7 +47,7 @@
         </td>
         <td> 
             <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Role </mat-label>
+                <mat-label>Role* </mat-label>
                 <mat-select formControlName="role_id" placeholder="Role">
                 <mat-option *ngFor="let role of role"  [value]="role.role_id">{{role.role_description}}</mat-option>
                 </mat-select>
@@ -55,7 +55,7 @@
         </td>
         <td> 
            <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Designation </mat-label>
+                <mat-label>Designation* </mat-label>
                 <mat-select formControlName="designation_id" placeholder="Designation">
                 <mat-option *ngFor="let designation of designation"  [value]="designation.designation_id">{{designation.designation_name}}</mat-option>
                 </mat-select>
@@ -63,7 +63,7 @@
         </td>
         <td> 
                 <mat-form-field  appearance="outline"  style="width:240px">
-                    <mat-label>Reporting Manager </mat-label>
+                    <mat-label>Reporting Manager* </mat-label>
                     <mat-select formControlName="reporting_manager_id" placeholder="Reporting Manager" >
                     <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_fname}}</mat-option>
                     </mat-select>
@@ -73,7 +73,7 @@
     <tr>
       <td > 
         <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-            <mat-label>Gender</mat-label>
+            <mat-label>Gender*</mat-label>
                <mat-select formControlName="gender" placeholder="Select">
                    <mat-option *ngFor="let gender of genders" [value]="gender">{{gender}}</mat-option>
                 </mat-select>
@@ -81,7 +81,7 @@
     </td>
       <td>
         <mat-form-field appearance="outline" style="width:240px">
-            <mat-label>Date of Birth</mat-label>
+            <mat-label>Date of Birth*</mat-label>
             <input type="text" matInput formControlName="date_of_birth" [matDatepicker]="picker" (click)="picker.open()"  readonly />
             <mat-datepicker-toggle matSuffix [for]="picker">
             </mat-datepicker-toggle>
@@ -90,7 +90,7 @@
       </td>
       <td>
         <mat-form-field appearance="outline" style="width:240px">
-            <mat-label>Date of Joining</mat-label>
+            <mat-label>Date of Joining*</mat-label>
             <input type="text" matInput formControlName="joining_date" placeholder="Date of Joining *" [matDatepicker]="picker1" (click)="picker1.open()"  readonly />
             <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
             <mat-datepicker touchUi #picker1></mat-datepicker>
@@ -108,7 +108,7 @@
     <tr>    
       <td>
         <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-            <mat-label>Payroll Status</mat-label>
+            <mat-label>Payroll Status*</mat-label>
                <mat-select formControlName="payroll_status" placeholder="Select">
                    <mat-option *ngFor="let payroll_status of payrollStatus" [value]="payroll_status">{{payroll_status}}</mat-option>
                 </mat-select>
@@ -142,7 +142,7 @@
       <tr>
           <td  style="width:240px">  
                 <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                       <mat-label>Background Verification Completed</mat-label>
+                       <mat-label>Background Verification Completed*</mat-label>
                        <mat-select formControlName="background_verification_check" placeholder="Select">
                            <mat-option *ngFor="let verification_check of verification_checks" [value]="verification_check">{{verification_check}}</mat-option>
                         </mat-select>
@@ -156,7 +156,7 @@
         </td>
         <td>
                 <mat-form-field appearance="outline" style="width:240px">
-                    <mat-label>Background Verified Date</mat-label>
+                    <mat-label>Background Verified Date*</mat-label>
                     <input type="text" matInput formControlName="background_verification_date" placeholder="Background Verified Date" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
                     <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker2></mat-datepicker>
@@ -164,7 +164,7 @@
       </td>
       <td>
               <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                   <mat-label>ID Proof</mat-label>
+                   <mat-label>ID Proof*</mat-label>
                     <mat-select formControlName="id_proof" placeholder="Select">
                      <mat-option *ngFor="let id_proof of id_proofs" [value]="id_proof">{{id_proof}}</mat-option>
                    </mat-select>
@@ -174,7 +174,7 @@
         <tr>            
           <td>
             <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                <mat-label>Address Proof</mat-label>
+                <mat-label>Address Proof*</mat-label>
                    <mat-select formControlName="address_proof" placeholder="Select">
                        <mat-option *ngFor="let address_proof of address_proofs" [value]="address_proof">{{address_proof}}</mat-option>
                     </mat-select>
@@ -189,7 +189,7 @@
       <tr>
           <td>            
               <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                <mat-label>Marital Status</mat-label>
+                <mat-label>Marital Status*</mat-label>
                    <mat-select formControlName="marital_status" placeholder="Select">
                        <mat-option *ngFor="let marital_status of maritalStatus" [value]="marital_status">{{marital_status}}</mat-option>
                     </mat-select>
@@ -254,13 +254,13 @@
       <tr>
         <td>
             <mat-form-field appearance="outline" style="width:240px">
-                <mat-label>PAN number</mat-label>
+                <mat-label>PAN number*</mat-label>
                 <input type="text" matInput formControlName="pan_card_number" />
               </mat-form-field>
         </td>
         <td>
             <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Base Location</mat-label>
+                <mat-label>Base Location*</mat-label>
                 <mat-select formControlName="base_location" placeholder="Base Location">                      
                 <mat-option *ngFor="let locationName of locationName"  [value]="locationName.city">{{locationName.city}}</mat-option>
                 </mat-select>
@@ -283,7 +283,7 @@
   <tr>   
       <td>
         <mat-form-field  appearance="outline" style="width:240px">
-          <mat-label>Qualification Type</mat-label>
+          <mat-label>Qualification Type*</mat-label>
             <mat-select formControlName="qualification_id" placeholder="Qualification Type">
             <mat-option *ngFor="let qualification_type of qualification_type" [value]="qualification_type.qualification_id">{{qualification_type.qualification}}</mat-option>
             </mat-select>
@@ -291,20 +291,20 @@
     </td>  
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Year of Passing</mat-label>
+        <mat-label>Year of Passing*</mat-label>
         <input type="text" matInput formControlName="year_of_pass" />
       </mat-form-field>
 
     </td>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Specialization</mat-label>
+        <mat-label>Specialization*</mat-label>
         <input type="text" matInput formControlName="specialization" />
       </mat-form-field>
     </td>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Institute Name</mat-label>
+        <mat-label>Institute Name*</mat-label>
         <input type="text" matInput formControlName="institute_name" />
       </mat-form-field>
     </td>    
@@ -312,7 +312,7 @@
   <tr>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>University</mat-label>
+        <mat-label>University*</mat-label>
         <input type="text" matInput formControlName="university" />
       </mat-form-field>
     </td>

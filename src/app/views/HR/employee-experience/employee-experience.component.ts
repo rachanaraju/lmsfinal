@@ -41,8 +41,8 @@ export class EmployeeExperienceComponent implements OnInit {
 
   EmployeeExperience = this.fb.group({
     employee_id:['',Validators.required],
-    previous_company_name:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],  
-    previous_company_designation: ['', [, Validators.pattern('^[a-zA-Z, ]*$')]],  
+    previous_company_name:['',[Validators.required,Validators.pattern('^[a-zA-Z, ]*$')]],       
+    previous_company_designation: ['',[Validators.required,Validators.pattern('^[a-zA-Z, ]*$')]],      
     previous_experience_start_date: [''],
     previous_experience_end_date: [''],
     remarks:['']

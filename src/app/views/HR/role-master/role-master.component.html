@@ -7,11 +7,11 @@
         <form #form="ngForm" [formGroup]="roleMasterForm" action="" method="post">
 
           <div class="form-group">
-            <label for="nf-email">Role Name</label>
+            <label for="nf-email">Role Name*</label>
             <input type="text" class="form-control" matInput formControlName="role_name" placeholder="Enter Role Name" required/>
           </div>
           <div class="form-group">
-            <label for="nf-email">Role Description</label>
+            <label for="nf-email">Role Description*</label>
             <input type="text" class="form-control" matInput formControlName="role_description" placeholder="Enter Role Description" required/>
           </div>
 
@@ -24,6 +24,17 @@
         <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(roleMasterForm)"><i class="fa fa-ban"></i> Cancel</button>
       </div>
     </div>
+    </div>
+  
+    <div class="form-group"> 
+      <div class="controls">
+        <div class="input-group">       
+          <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+          <span class="input-group-append">
+            <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+          </span> 
+        </div>
+      </div>
     </div>
     <div class="card">
       <mat-table [dataSource]="listdata"  >

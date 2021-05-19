@@ -20,7 +20,7 @@
                     </select>
                   </mat-form-field> -->
                   <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                    <mat-label>Leave Type</mat-label>
+                    <mat-label>Leave Type*</mat-label>
                        <mat-select formControlName="leave_type" placeholder="Select">
                            <mat-option *ngFor="let leave_type of Option" [value]="leave_type">{{leave_type}}</mat-option>
                         </mat-select>
@@ -40,7 +40,7 @@
                 <td >
                   <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                     <mat-label>No Of Leaves</mat-label>
-                    <input formControlName="number_of_leaves" type="text" placeholder="number_of_leaves"  matInput />
+                    <input formControlName="number_of_leaves" type="text" placeholder="number_of_leaves"  matInput required/>
                  </mat-form-field>
                 </td>
               
@@ -100,6 +100,17 @@
           </form>        
         </div>       
       </div>
+  </div>
+  <div class="form-group"> 
+    <div class="controls">
+      <div class="input-group">     
+       
+       <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+         <span class="input-group-append">
+          <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+        </span> 
+      </div>
+    </div>
   </div>
 
   <div class="mat-elevation-z8">

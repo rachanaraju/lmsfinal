@@ -15,7 +15,7 @@
                     <!-- <td> -->
                         <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                           <mat-label>Holiday name</mat-label>
-                          <input formControlName="holiday_name" type="text" placeholder="holiday_name"  matInput />
+                          <input formControlName="holiday_name" type="text" placeholder="holiday_name"  matInput required/>
                        </mat-form-field>
                       </td>
               
@@ -58,27 +58,15 @@
 
 <td>
   <mat-form-field appearance="outline" style="width:240px">
-    <mat-label>Date</mat-label>
+    <mat-label>Date*</mat-label>
     <input type="text" matInput formControlName="date" placeholder="date" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
     <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
     <mat-datepicker touchUi #picker2></mat-datepicker>
 </mat-form-field>
       
-</td>
-
-  
+</td>  
 </tr>
-
-
-
-
-
-
-
-              
-
-                          
-            </table>     
+  </table>     
             <div class="card-footer">
               <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()"> {{btnName}}</button>
               <button type="reset" class="btn btn-sm btn-danger" (click)="resetForm(HolidayMaster)"><i class="fa fa-ban"></i> Cancel</button>
@@ -87,7 +75,16 @@
         </div>       
       </div>
   </div>
-
+  <div class="form-group"> 
+    <div class="controls">
+      <div class="input-group">       
+        <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+        <span class="input-group-append">
+          <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+        </span> 
+      </div>
+    </div>
+  </div>
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="listdata" *ngIf="!loaded" >
         <ng-container matColumnDef="holiday_name">

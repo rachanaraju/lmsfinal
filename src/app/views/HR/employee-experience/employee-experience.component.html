@@ -9,6 +9,7 @@
               <tr>
                 <td style="width:300px">
                     <mat-form-field  appearance="outline">
+                      <mat-label>Employee Name*</mat-label>
                       <mat-select formControlName="employee_id" placeholder="Employee Name">
                         <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_fname}}</mat-option>
                       </mat-select>
@@ -17,7 +18,7 @@
                 <td>
                   <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                     <mat-label>Previous Company Name</mat-label>
-                    <input formControlName="previous_company_name" type="text" placeholder="Previous Company Name"  matInput />
+                    <input formControlName="previous_company_name" type="text" placeholder="Previous Company Name"  matInput required/>
                  </mat-form-field>
                 </td>
 
@@ -28,7 +29,7 @@
                 <td>
                   <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                     <mat-label>Previous Company Designation</mat-label>
-                    <input formControlName="previous_company_designation" type="text" placeholder="Previous Company Designation"  matInput />
+                    <input formControlName="previous_company_designation" type="text" placeholder="Previous Company Designation"  matInput required/>
                 </mat-form-field>
                 </td>
                 <td>                 
@@ -83,6 +84,17 @@
           </form>        
         </div>       
       </div>
+  </div>
+  <div class="form-group"> 
+    <div class="controls">
+      <div class="input-group">     
+       
+       <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
+         <span class="input-group-append">
+          <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
+        </span> 
+      </div>
+    </div>
   </div>
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="listdata" *ngIf="!loaded" >

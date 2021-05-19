@@ -40,8 +40,8 @@ export const navItems: INavData[] = [
     name: 'HR'
   },
   {
-    name: 'Configration',
-    icon: 'icon-puzzle',
+    // name: 'Configration',
+    // icon: 'icon-puzzle',
     children: [
       {
         name: 'Company Profile',

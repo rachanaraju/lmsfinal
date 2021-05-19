@@ -61,6 +61,7 @@ export class EmployeeLeaveComponent implements OnInit {
        from_date:['',Validators.required],
        to_date:['',Validators.required],
        status:['',Validators.required],
+       
        comments:['']
       
       });

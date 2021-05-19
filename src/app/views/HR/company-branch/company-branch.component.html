@@ -16,7 +16,7 @@
                 </td>
                 <td>                 
                   <mat-form-field  appearance="outline" style="width:240px">
-                    <mat-label>Company Name </mat-label>
+                    <mat-label>Company Name* </mat-label>
                     <mat-select formControlName="company_id" placeholder="Company Name">                      
                     <mat-option *ngFor="let companyName of companyName"  [value]="companyName.company_id">{{companyName.company_name}}</mat-option>
                     </mat-select>
