@@ -85,7 +85,7 @@ stateId:any;
     gst_no:[''],
     website:[''], 
     contact_no:['',[Validators.required,Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
-    alternative_contact_no:['',[Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
+    alternative_contact_no:['',[,Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
     contact_person:[''],
     tan:[''],
     pan:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9, ]*$')]], 
@@ -94,7 +94,7 @@ stateId:any;
     company_type:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
     industry:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
     status:[''], 
-    remarks:['', [Validators.pattern('^[a-zA-Z, ]*$')]],
+    remarks:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],
     created_by:['']     
     });
 

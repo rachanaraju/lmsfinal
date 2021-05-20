@@ -9,7 +9,7 @@
             <tr>
               <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
                 <mat-label>Employee Id</mat-label>
-                <input matInput formControlName="employee_id" type="text" required/>
+                <input formControlName="employee_id" type="text"  matInput required/>
             </mat-form-field> 
         </td>
           <!-- <div class="form-group">
@@ -18,7 +18,7 @@
           </div> -->
           <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
             <mat-label>Manager Id</mat-label>
-            <input matInput formControlName="manager_id" type="text" required/>
+            <input formControlName="manager_id" type="text"  matInput required/>
         </mat-form-field> 
     </td>
 
@@ -27,17 +27,18 @@
             <input type="text" class="form-control" matInput formControlName="manager_id" placeholder="Enter Manager" required>
           </div> -->
 
-          <td>
-            <mat-form-field appearance="outline" style="width:240px">
-                <mat-label>Date of Applied*</mat-label>
-                <input type="text" matInput formControlName="date_of_applied" placeholder="Date of Applied" [matDatepicker]="picker" (click)="picker.open()"   readonly />
-                <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
-                <mat-datepicker touchUi #picker></mat-datepicker>
-        </mat-form-field> 
+          <td> <mat-form-field appearance="outline">
+            <mat-label> Date of Applied*</mat-label>
+            <input type="text" matInput formcontrolName="date_of_applied" [matDatepicker]="picker" (click)="picker.open()"  readonly/>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+            </mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
         </td>
+
         <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
           <mat-label>Number of Leaves</mat-label>
-          <input  matInput formControlName="number_of_leaves" type="text" required/>
+          <input formControlName="number_of_leaves" type="text"  matInput required/>
       </mat-form-field> 
   </td>
   </tr>
@@ -74,7 +75,7 @@
 </td> 
           <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
             <mat-label>Comments</mat-label>
-            <input matInput formControlName="comments" type="text"/>
+            <input formControlName="comments" type="text"  matInput />
         </mat-form-field> 
     </td>
     
@@ -96,16 +97,6 @@
       </div>
     </div>
     </div>
-    <div class="form-group"> 
-      <div class="controls">
-        <div class="input-group">       
-          <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
-          <span class="input-group-append">
-            <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
-          </span> 
-        </div>
-      </div>
-    </div> 
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">

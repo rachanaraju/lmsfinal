@@ -69,7 +69,7 @@ import Swal from 'sweetalert2';
     leave_id:[''],
     number_of_leaves:['', [Validators.required, Validators.pattern('^[0-9a-zA-z, ]*$')]],
     leave_type:[''],
-    date:['',Validators.required],
+    date:[''],
     comments:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],
   
     
@@ -82,17 +82,6 @@ import Swal from 'sweetalert2';
     });
     this.btnName="Submit";
   }
-  // applyFilter(filterValue: string) {
-  //   this.listdata.filter = filterValue.trim().toLowerCase();
-  //   if (this.listdata.paginator) {
-  //     this.listdata.paginator.firstPage();
-  //   }
-  // }
-  // onSearchClear(){     
-  //   this.id="" ;
-  //   this.applyFilter("");
-  // }
-
   ngOnInit(): void {    
     // this.employeeService.getEmployees().subscribe((data) => {
     //   this.employee = data;
@@ -103,7 +92,6 @@ import Swal from 'sweetalert2';
     });
     this.readCategory();
   }
-  
   readCategory(){
     this.leaveMasterService.getleaveMaster().subscribe((data) => {
       this.category = data;

@@ -50,7 +50,7 @@ export class DepartmentComponent implements OnInit {
 
     departmentCreateForm = this.fb.group({
       department_name: ['',[Validators.required,Validators.pattern('^[a-zA-Z, ]*$')]],       
-      department_code: [''],
+      department_code: ['',],
       department_head: ['',Validators.required],
       department_type: ['' ,Validators.required],
       department_location: ['',Validators.required]

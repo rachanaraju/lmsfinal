@@ -55,14 +55,12 @@ export class EmployeeLeaveComponent implements OnInit {
         
         employee_id:['', [Validators.required, Validators.pattern('^[0-9a-zA-Z, ]*$')]], 
    
-       manager_id:['', [Validators.required, Validators.pattern('^[0-9a-zA-Z, ]*$')]], 
-      date_of_applied:['',Validators.required],
-       number_of_leaves:['', [Validators.required, Validators.pattern('^[0-9a-zA-z, ]*$')]],
-       from_date:['',Validators.required],
-       to_date:['',Validators.required],
-       status:['',Validators.required],
-       
-       comments:['']
+        manager_id:['', [Validators.required, Validators.pattern('^[0-9a-zA-Z, ]*$')]], 
+       date_of_applied:['',Validators.required],
+        number_of_leaves:['', [Validators.required, Validators.pattern('^[0-9a-zA-z, ]*$')]],
+        from_date:['',Validators.required],
+        to_date:['',Validators.required],
+        status:['',Validators.required],
       
       });
     }

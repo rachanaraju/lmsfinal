@@ -49,11 +49,9 @@ export class RoleMasterComponent implements OnInit {
     }
     mainForm(){
       this.roleMasterForm = this.fb.group({
-        
         role_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]], 
    
         role_description:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]] 
-   
        // company_logo:[''],
         // avatar:['']
 

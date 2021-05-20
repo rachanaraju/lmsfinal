@@ -52,11 +52,10 @@ import { HolidayMasterService } from '../../../services/holiday-master.service';
     ) { }
 
     HolidayMaster = this.fb.group({
-    holiday_id:[''],
-    holiday_name:['',[Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
-    date:['',Validators.required],
-    comments:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],
-   
+      holiday_id:[''],
+      holiday_name:['',[Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
+      date:['',Validators.required],
+      comments:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],
     
   });
  

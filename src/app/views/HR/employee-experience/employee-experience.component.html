@@ -85,17 +85,6 @@
         </div>       
       </div>
   </div>
-  <div class="form-group"> 
-    <div class="controls">
-      <div class="input-group">     
-       
-       <input #filter [(ngModel)]="id"  (keyup)="applyFilter($event.target.value)" placeholder="Search"  size="16" class="form-control">
-         <span class="input-group-append">
-          <button class="btn btn-secondary" *ngIf="id" (click)="onSearchClear()" type="button">Clear</button>   
-        </span> 
-      </div>
-    </div>
-  </div>
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="listdata" *ngIf="!loaded" >
         <ng-container matColumnDef="emp_name">
