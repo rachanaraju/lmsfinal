@@ -70,7 +70,7 @@ import Swal from 'sweetalert2';
     number_of_leaves:['', [Validators.required, Validators.pattern('^[0-9a-zA-z, ]*$')]],
     leave_type:['',Validators.required],  
     date:[''],
-    comments:['', [Validators.pattern('^[a-zA-Z0-9, ]*$')]],
+    comments:['', [Validators.pattern('^[a-zA-Z0-9, ]*$')]]
   
     
   });
