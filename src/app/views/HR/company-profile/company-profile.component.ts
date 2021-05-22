@@ -86,7 +86,7 @@ stateId:any;
     website:[''], 
     contact_no:['',[Validators.required,Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
     alternative_contact_no:['',[,Validators.pattern('[6-9]{1}[0-9]{9}'),Validators.maxLength(10),Validators.minLength(10)]],
-    contact_person:[''],
+    contact_person:['', [ Validators.pattern('^[a-zA-Z, ]*$')]],
     tan:['', [ Validators.pattern('^[a-zA-Z0-9, ]*$')]], 
     pan:['',[Validators.required,Validators.pattern('[A-Z0-9]{10}')]],
     email: ['', [Validators.pattern(this.emailPattern), Validators.required]],
