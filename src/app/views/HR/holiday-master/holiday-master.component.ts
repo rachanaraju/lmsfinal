@@ -55,7 +55,7 @@ import { HolidayMasterService } from '../../../services/holiday-master.service';
       holiday_id:[''],
       holiday_name:['',[Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
       date:['',Validators.required],
-      comments:['', [ Validators.pattern('^[a-zA-Z, ]*$')]],
+      comments:['', [ Validators.pattern('^[a-zA-Z, ]*$')]]
     
   });
  
