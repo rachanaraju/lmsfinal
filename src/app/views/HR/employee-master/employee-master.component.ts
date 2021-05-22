@@ -82,7 +82,7 @@ export class EmployeeMasterComponent implements OnInit {
      
     employee_id:[''],    
     employee_fname: ['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],    
-    employee_mname: ['', [, Validators.pattern('^[a-zA-Z, ]*$')]],  
+    employee_mname: ['', [Validators.pattern('^[a-zA-Z, ]*$')]],  
     employee_lname: ['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],  
     employee_code:['',Validators.required],
     role_id: ['',Validators.required],     
@@ -116,7 +116,7 @@ export class EmployeeMasterComponent implements OnInit {
     specialization:['', Validators.required],  
     institute_name:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],  
     university:['',[Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
-    grade:['',[Validators.pattern('[A-F}{1}')]]
+    grade:['', [Validators.pattern('^[a-zA-Z, ]*$')]]
     });
     
     nationality=new FormControl();
