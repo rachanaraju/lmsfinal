@@ -52,7 +52,7 @@ result:any={};
           Swal.fire({
             title:'Login successfull',
           })
-          this.router.navigate(['/HR']);    
+          this.router.navigate(['/HR/CompanyProfile']);    
           // debugger;    
         }    
         else{  
