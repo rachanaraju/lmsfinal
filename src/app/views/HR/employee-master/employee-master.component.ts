@@ -116,7 +116,7 @@ export class EmployeeMasterComponent implements OnInit {
     specialization:['', Validators.required],  
     institute_name:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],  
     university:['',[Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]],
-    grade:['']
+    grade:['',[Validators.pattern('[A-F}{1}')]]
     });
     
     nationality=new FormControl();
