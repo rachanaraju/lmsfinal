@@ -45,7 +45,7 @@ export class EmployeeExperienceComponent implements OnInit {
     previous_company_designation: ['',[Validators.pattern('^[a-zA-Z, ]*$')]],      
     previous_experience_start_date: [''],
     previous_experience_end_date: [''],
-    remarks:['']
+    remarks:['',[Validators.pattern('^[a-zA-Z, ]*$')]]
 
   });
   resetForm(form: FormGroup) {
