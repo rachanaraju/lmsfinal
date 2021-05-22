@@ -100,7 +100,7 @@
     <div class="animated fadeIn">
       <div class="card">
         <div class="card-header">
-      <i class="icon-drop"></i> <strong>Manager Leaves</strong> 
+      <i class="icon-drop"></i> <strong>Leaves to be APPROVED BY Manager</strong> 
       <mat-table [dataSource]="listdata"  >
         <ng-container matColumnDef="employee_id">
             <mat-header-cell *matHeaderCellDef> Employee Id </mat-header-cell>
@@ -126,7 +126,7 @@
 
 
               
-              <button type="button" class="btn btn-sm btn-primary" (click)="onEditClick(element.employye_leave_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
+              <button type="button" class="btn btn-sm btn-primary" (click)="onEditBtnClick(element.employee_leave_id)"><i class="fa fa-lightbulb-o"></i>&nbsp;Edit</button>
             </mat-cell>
         </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -141,7 +141,7 @@
       <div class="animated fadeIn">
         <div class="card">
           <div class="card-header">
-            <i class="icon-drop"></i> <strong>Employee Leaves</strong> 
+            <i class="icon-drop"></i> <strong>Leaves APPLIED BY Employee/Manager(self)</strong> 
      
       <mat-table [dataSource]="listdata1"  >
         <ng-container matColumnDef="employee_id">

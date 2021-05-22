@@ -50,10 +50,10 @@ export class DepartmentComponent implements OnInit {
 
     departmentCreateForm = this.fb.group({
       department_name: ['',[Validators.required,Validators.pattern('^[a-zA-Z, ]*$')]],       
-      department_code: ['',],
-      department_head: ['',Validators.required],
-      department_type: ['' ,Validators.required],
-      department_location: ['',Validators.required]
+      department_code: ['',[Validators.required,Validators.pattern('^[a-zA-Z0-9, ]*$')]], 
+      department_head: [''],
+      department_type: [''],
+      department_location: ['']
     });
 
     ngOnInit(): void {

@@ -14,7 +14,7 @@
       <td >  
        <mat-form-field appearance="outline" style="width:240px">
         <mat-label>Employee First Name</mat-label>
-        <input type="text" matInput formControlName="employee_fname" maxlength="50" required />
+        <input type="text" matInput formControlName="employee_fname" maxlength="50" required/>
       </mat-form-field>
     </td>
       <td>  
@@ -26,7 +26,7 @@
       <td>   
           <mat-form-field appearance="outline" style="width:240px">
                 <mat-label>Employee Last Name</mat-label>
-                <input type="text" matInput formControlName="employee_lname" maxlength="50" required  />
+                <input type="text" matInput formControlName="employee_lname" maxlength="50" required/>
            </mat-form-field>
       </td>
       <td>
@@ -39,7 +39,7 @@
     <tr>
         <td > 
             <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Department* </mat-label>
+                <mat-label>Department*</mat-label>
                 <mat-select formControlName="department_id" placeholder="Department">                      
                 <mat-option *ngFor="let department of department"  [value]="department.department_id">{{department.department_name}}</mat-option>
                 </mat-select>
@@ -47,7 +47,7 @@
         </td>
         <td> 
             <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Role* </mat-label>
+                <mat-label>Role*</mat-label>
                 <mat-select formControlName="role_id" placeholder="Role">
                 <mat-option *ngFor="let role of role"  [value]="role.role_id">{{role.role_description}}</mat-option>
                 </mat-select>
@@ -55,7 +55,7 @@
         </td>
         <td> 
            <mat-form-field  appearance="outline" style="width:240px">
-                <mat-label>Designation* </mat-label>
+                <mat-label>Designation*</mat-label>
                 <mat-select formControlName="designation_id" placeholder="Designation">
                 <mat-option *ngFor="let designation of designation"  [value]="designation.designation_id">{{designation.designation_name}}</mat-option>
                 </mat-select>
@@ -63,7 +63,7 @@
         </td>
         <td> 
                 <mat-form-field  appearance="outline"  style="width:240px">
-                    <mat-label>Reporting Manager* </mat-label>
+                    <mat-label>Reporting Manager*</mat-label>
                     <mat-select formControlName="reporting_manager_id" placeholder="Reporting Manager" >
                     <mat-option *ngFor="let employee of employee"  [value]="employee.employee_id">{{employee.employee_fname}}</mat-option>
                     </mat-select>
@@ -116,7 +116,7 @@
       </td>
       <td>
           <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-            <mat-label>Blood Group</mat-label>
+            <mat-label>Blood Group*</mat-label>
                <mat-select formControlName="blood_group" placeholder="Select">
                    <mat-option *ngFor="let blood_group of bloodGroups" [value]="blood_group">{{blood_group}}</mat-option>
                 </mat-select>
@@ -142,7 +142,7 @@
       <tr>
           <td  style="width:240px">  
                 <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                       <mat-label>Background Verification Completed*</mat-label>
+                       <mat-label>Background Verification Completed</mat-label>
                        <mat-select formControlName="background_verification_check" placeholder="Select">
                            <mat-option *ngFor="let verification_check of verification_checks" [value]="verification_check">{{verification_check}}</mat-option>
                         </mat-select>
@@ -150,13 +150,13 @@
           </td>
           <td>   
             <mat-form-field appearance="outline" style="width:240px">
-                  <mat-label>Background Verification Done By*</mat-label>
+                  <mat-label>Background Verification Done By</mat-label>
                   <input type="text" matInput formControlName="background_verification_done_by" maxlength="50" required  />
              </mat-form-field>
         </td>
         <td>
                 <mat-form-field appearance="outline" style="width:240px">
-                    <mat-label>Background Verified Date*</mat-label>
+                    <mat-label>Background Verified Date</mat-label>
                     <input type="text" matInput formControlName="background_verification_date" placeholder="Background Verified Date" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
                     <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker2></mat-datepicker>
@@ -164,7 +164,7 @@
       </td>
       <td>
               <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                   <mat-label>ID Proof*</mat-label>
+                   <mat-label>ID Proof</mat-label>
                     <mat-select formControlName="id_proof" placeholder="Select">
                      <mat-option *ngFor="let id_proof of id_proofs" [value]="id_proof">{{id_proof}}</mat-option>
                    </mat-select>
@@ -174,7 +174,7 @@
         <tr>            
           <td>
             <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-                <mat-label>Address Proof*</mat-label>
+                <mat-label>Address Proof</mat-label>
                    <mat-select formControlName="address_proof" placeholder="Select">
                        <mat-option *ngFor="let address_proof of address_proofs" [value]="address_proof">{{address_proof}}</mat-option>
                     </mat-select>
@@ -247,15 +247,15 @@
           <td>
             <mat-form-field appearance="outline" style="width:240px">
                 <mat-label>Aadhar Number</mat-label>
-                <input type="text" matInput formControlName="aadhar_card_number" maxlength="12" />
+                <input type="text" matInput formControlName="aadhar_card_number" maxlength="12" required/>
               </mat-form-field>
           </td>
       </tr>
       <tr>
         <td>
             <mat-form-field appearance="outline" style="width:240px">
-                <mat-label>PAN number*</mat-label>
-                <input type="text" matInput formControlName="pan_card_number" />
+                <mat-label>PAN number</mat-label>
+                <input type="text" matInput formControlName="pan_card_number" required/>
               </mat-form-field>
         </td>
         <td>
@@ -291,29 +291,29 @@
     </td>  
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Year of Passing*</mat-label>
-        <input type="text" matInput formControlName="year_of_pass" />
+        <mat-label>Year of Passing</mat-label>
+        <input type="text" matInput formControlName="year_of_pass" required/>
       </mat-form-field>
 
     </td>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Specialization*</mat-label>
-        <input type="text" matInput formControlName="specialization" />
+        <mat-label>Specialization</mat-label>
+        <input type="text" matInput formControlName="specialization" required/>
       </mat-form-field>
     </td>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>Institute Name*</mat-label>
-        <input type="text" matInput formControlName="institute_name" />
+        <mat-label>Institute Name</mat-label>
+        <input type="text" matInput formControlName="institute_name" required/>
       </mat-form-field>
     </td>    
   </tr>
   <tr>
     <td>
       <mat-form-field appearance="outline" style="width:240px">
-        <mat-label>University*</mat-label>
-        <input type="text" matInput formControlName="university" />
+        <mat-label>University</mat-label>
+        <input type="text" matInput formControlName="university" required/>
       </mat-form-field>
     </td>
     <td>

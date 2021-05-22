@@ -68,9 +68,9 @@ import Swal from 'sweetalert2';
   LeaveMaster = this.fb.group({
     leave_id:[''],
     number_of_leaves:['', [Validators.required, Validators.pattern('^[0-9a-zA-z, ]*$')]],
-    leave_type:[''],
+    leave_type:['',Validators.required],  
     date:[''],
-    comments:['', [, Validators.pattern('^[a-zA-Z, ]*$')]],
+    comments:['', [, Validators.pattern('^[a-zA-Z0-9, ]*$')]],
   
     
   });

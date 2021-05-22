@@ -21,7 +21,7 @@
        </td>
        <td>
         <mat-form-field  appearance="outline">
-          <mat-label>Department Head*</mat-label>
+          <mat-label>Department Head</mat-label>
           <mat-select formControlName="department_head" placeholder="Department Head">                      
             <mat-option *ngFor="let employee of employee"  [value]="employee.department_head">{{employee.department_head}}</mat-option>                   
           </mat-select>
@@ -31,7 +31,7 @@
     <tr>      
       <td>
         <mat-form-field  appearance="outline">
-          <mat-label>Department Type*</mat-label>
+          <mat-label>Department Type</mat-label>
           <mat-select formControlName="department_type" placeholder="Department Type">                      
           <mat-option *ngFor="let departmentName of departmentName"  [value]="departmentName.department_name">{{departmentName.department_name}}</mat-option>
           </mat-select>
@@ -39,7 +39,7 @@
       </td>
       <td>
         <mat-form-field  appearance="outline">
-          <mat-label>Department Location*</mat-label>
+          <mat-label>Department Location</mat-label>
           <mat-select formControlName="department_location" placeholder="Department Location">                      
           <mat-option *ngFor="let locationName of locationName"  [value]="locationName.city">{{locationName.city}}</mat-option>
           </mat-select>
