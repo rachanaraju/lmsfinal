@@ -65,7 +65,28 @@ export class EmployeeLeaveComponent implements OnInit {
       
       });
     }
-    
+    readCategory(){
+      this.user_id= localStorage.getItem("user_id");
+      console.log(this.user_id);
+        this.employeeleaveService.getemployeeLeaveByManagerId(this.user_id).subscribe((data) => {
+        this.category = data;
+        this.changeDetectorRefs.detectChanges();
+        this.listdata= new MatTableDataSource(this.category);       
+        this.loaded=false;
+        console.log(this.category)
+      })    
+    }
+    readCategory1(){
+      this.user_id= localStorage.getItem("user_id");
+      console.log(this.user_id);
+        this.employeeleaveService.getemployeeLeaveByEmployeeId(this.user_id).subscribe((data) => {
+        this.category1 = data;
+        this.changeDetectorRefs.detectChanges();
+        this.listdata1= new MatTableDataSource(this.category1);       
+        this.loaded=false;
+        console.log(this.category1)
+      })    
+    }
 
     resetForm(form: FormGroup) {
       form.reset();
@@ -281,28 +302,7 @@ else{
   })
 
 }
-      readCategory(){
-      this.user_id= localStorage.getItem("user_id");
-      console.log(this.user_id);
-        this.employeeleaveService.getemployeeLeaveByManagerId(this.user_id).subscribe((data) => {
-        this.category = data;
-        this.changeDetectorRefs.detectChanges();
-        this.listdata= new MatTableDataSource(this.category);       
-        this.loaded=false;
-        console.log(this.category)
-      })    
-    }
-    readCategory1(){
-      this.user_id= localStorage.getItem("user_id");
-      console.log(this.user_id);
-        this.employeeleaveService.getemployeeLeaveByEmployeeId(this.user_id).subscribe((data) => {
-        this.category1 = data;
-        this.changeDetectorRefs.detectChanges();
-        this.listdata1= new MatTableDataSource(this.category1);       
-        this.loaded=false;
-        console.log(this.category1)
-      })    
-    }
+      
   }
 }
 
