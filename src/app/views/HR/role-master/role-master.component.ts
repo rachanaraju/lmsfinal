@@ -1,5 +1,3 @@
-` `
-  
   
    import { ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -49,9 +47,11 @@ export class RoleMasterComponent implements OnInit {
     }
     mainForm(){
       this.roleMasterForm = this.fb.group({
+        
         role_name: ['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]], 
    
         role_description:['', [Validators.required, Validators.pattern('^[a-zA-Z, ]*$')]] 
+   
        // company_logo:[''],
         // avatar:['']
 
@@ -162,29 +162,16 @@ imageChanged(event){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     onSubmit() {
-      //this.submitted = true;
-     // let imageName;
-    // console.log(this.roleMasterForm.get("avatar").value);
     console.log(this.roleMasterForm.value)
     if(this.roleMasterForm.valid){
       if(this.btnName=="Submit")
       {
         console.log("submit pressed")
-      if (!this.roleMasterForm.valid) {
-        console.log("problem!!!!")
-        return false;
-      } else {
         console.log("before apiService")    
         // console.log(this.roleMasterForm.get("avatar").value);
         console.log(this.roleMasterForm.value)
         this.roleService.addRole(this.roleMasterForm.value).subscribe(
           (res) => {
-        // this.roleService.addRole(
-        //   {role_description:this.roleMasterForm.get("role_description").value,
-        //   avatar:this.roleMasterForm.get("avatar").value
-        // }
-        // ).subscribe(
-        //   (res) => {
             this.successMsg="Role added successfully";
             this.readCategory();
             this. resetForm(this.roleMasterForm);
@@ -206,7 +193,7 @@ imageChanged(event){
             console.log(error);
           }
         );
-      }
+      
     }
   
   else {
