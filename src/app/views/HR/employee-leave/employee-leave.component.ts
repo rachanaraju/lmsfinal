@@ -227,10 +227,6 @@ imageChanged(event){
       if(this.btnName=="Submit")
       {
         console.log("submit pressed")
-      if (!this.employeeLeaveForm.valid) {
-        console.log("problem!!!!")
-        return false;
-      } else {
         console.log("before apiService")    
         // console.log(this.roleMasterForm.get("avatar").value);
         console.log(this.employeeLeaveForm.value)
@@ -264,7 +260,7 @@ imageChanged(event){
             console.log(error);
           }
         );
-      }
+      
     }
   
   else {
