@@ -27,13 +27,13 @@
             <input type="text" class="form-control" matInput formControlName="manager_id" placeholder="Enter Manager" required>
           </div> -->
 
-          <td> <mat-form-field appearance="outline">
-            <mat-label> Date of Applied</mat-label>
-            <input type="text" matInput formcontrolName="date_of_applied" [matDatepicker]="picker" (click)="picker.open()"  readonly/>
-            <mat-datepicker-toggle matSuffix [for]="picker">
-            </mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
-          </mat-form-field>
+          <td>
+              <mat-form-field appearance="outline" style="width:240px">
+        <mat-label>Date_of_applied</mat-label>
+        <input type="text" matInput formControlName="date_of_applied" placeholder="Date_of_applied" [matDatepicker]="picker" (click)="picker.open()"   readonly />
+        <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+</mat-form-field> 
         </td>
 
         <td> <mat-form-field fxFlex='80' class="example-full-width2 font-h1" appearance="outline">
