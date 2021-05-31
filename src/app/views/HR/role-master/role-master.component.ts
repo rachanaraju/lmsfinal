@@ -126,8 +126,8 @@ import { RoleService } from '../../../services/role.service';
       console.log(this.roleMaster.value)
       this.roleService.addRole(this.roleMaster.value).subscribe(
         (res) => {
-          this.successMsg="role added successful ";
-          console.log('role added successfully!');
+          this.successMsg="Role Master added successful ";
+          console.log('Role Master added successfully!');
           this.readCategory();
           this. resetForm(this.roleMaster);
           Swal.fire({
@@ -158,8 +158,8 @@ import { RoleService } from '../../../services/role.service';
     this.roleService.updateRole(this.role_Id, this.roleMaster.value)
     .subscribe(res => {
     
-      console.log('role updated successfully!')
-      this.successMsg="role updated successfully ";
+      console.log('Role Master updated successfully!')
+      this.successMsg="Role Master updated successfully ";
       this.readCategory();
       this. resetForm(this.roleMaster);
       Swal.fire({
