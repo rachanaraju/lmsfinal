@@ -28,7 +28,7 @@
                   </td>
    <td>
     <mat-form-field appearance="outline" style="width:240px">
-      <mat-label>Date of Applied*</mat-label>
+      <mat-label>Date of Applied</mat-label>
       <input type="text" matInput formControlName="date_of_applied" placeholder="date" [matDatepicker]="picker" (click)="picker.open()"   readonly />
       <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
@@ -45,7 +45,7 @@
   <tr>
   <td>
     <mat-form-field appearance="outline" style="width:240px">
-      <mat-label>From*</mat-label>
+      <mat-label>From</mat-label>
       <input type="text" matInput formControlName="from_date" placeholder="From" [matDatepicker]="picker1" (click)="picker1.open()"   readonly />
       <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
       <mat-datepicker touchUi #picker1></mat-datepicker>
@@ -54,7 +54,7 @@
   </td>  
   <td>
     <mat-form-field appearance="outline" style="width:240px">
-      <mat-label>To*</mat-label>
+      <mat-label>To</mat-label>
       <input type="text" matInput formControlName="to_date" placeholder="To" [matDatepicker]="picker2" (click)="picker2.open()"   readonly />
       <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
       <mat-datepicker touchUi #picker2></mat-datepicker>
@@ -63,7 +63,7 @@
   </td>  
   <td>      
     <mat-form-field class="example-full-width font-h1" appearance="outline" style="width:240px">
-     <mat-label>Status*</mat-label>
+     <mat-label>Status</mat-label>
           <mat-select formControlName="status" placeholder="Select" >
             <mat-option *ngFor="let status of Option" [value]="status" >{{status}}</mat-option>
          </mat-select>
