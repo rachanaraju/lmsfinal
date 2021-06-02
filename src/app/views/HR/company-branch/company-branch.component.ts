@@ -211,7 +211,8 @@ this.stateList=id;
           }).then((result) => {
             if (result.value) {             
             }
-          });         
+          });    
+          this.resetForm(this.companyBranchForm);
         }, (error) => {
           console.log(error)
         })
