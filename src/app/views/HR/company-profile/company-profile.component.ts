@@ -230,7 +230,7 @@ this.stateList=id;
            
           }
         });
-       
+       this.resetForm(this.companyProfileForm);
       }, (error) => {
         console.log(error)
       })
