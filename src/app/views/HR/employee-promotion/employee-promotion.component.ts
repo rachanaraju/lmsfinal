@@ -43,7 +43,7 @@ export class EmployeePromotionComponent implements OnInit {
   EmployeePromotion = this.fb.group({
     employee_id:['',Validators.required],
     designation_id:['',Validators.required],   
-    level:['',Validators.required],  
+    level:[''],  
     effective_promotion_date: [''],     
     compensation_percentage: ['', Validators.pattern('^[0-9, ]*$')],
 
